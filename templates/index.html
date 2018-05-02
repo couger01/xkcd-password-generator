@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<h1>Home</h1>
+<form method="post" action="{{ url_for('generate_password') }}">
+    {{ form.hidden_tag() }}
+    {{ form.max_word_length.label }} {{ form.max_word_length }}
+    {{ form.min_word_length.label }} {{ form.min_word_length }}
+    {{ form.overall_word_length.label }} {{ form.overall_word_length }}
+    {{ form.generate.label }} {{ form.generate }}
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% if password %}
+            {% for piece in password %}
+                <td>{{ piece }}</td>
+            {% endfor %}
+        {% endif %}
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
